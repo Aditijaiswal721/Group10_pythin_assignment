@@ -28,17 +28,27 @@ class BubbleSort(Sort):
                     self._items[i], self._items[i + 1] = self._items[i + 1], self._items[i]
 
 def main():
-    a = int(input("Enter the size of the list:"))
-    print("Enter the list:")
-    b = []
-    for i in range(a):
-        b.append(int(input()))
-    
-    bubble_sorter = BubbleSort(b.copy())
-    bubble_time = bubble_sorter._time()
-    print(f"Bubble Sort took {bubble_time} seconds to sort the list.")
-    print("Sorted List (Bubble Sort):", bubble_sorter.get_items())
+    try:
+        a = int(input("Enter the size of the list:"))
+        if a <= 0:
+            raise ValueError("List size must be a positive integer.")
+        
+        print("Enter the list:")
+        b = []
+        for i in range(a):
+            b.append(int(input()))
+        
+        bubble_sorter = BubbleSort(b.copy())
+        bubble_time = bubble_sorter._time()
+        print(f"Bubble Sort took {bubble_time} seconds to sort the list.")
+        print("Sorted List (Bubble Sort):", bubble_sorter.get_items())
 
+    except ValueError as e:
+        print(f"Error: {e}")
+    
+    except Exception as e:
+        print(f"An error occurredd: {str(e)}")
 
 if __name__ == "__main__":
     main()
+
