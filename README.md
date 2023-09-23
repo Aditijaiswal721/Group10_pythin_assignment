@@ -1,2 +1,2 @@
-# Group10_pythin_assignment
+# Group10_python_assignment
 Group 10 python assignment
