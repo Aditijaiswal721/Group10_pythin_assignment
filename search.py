@@ -31,7 +31,25 @@ class Linear_Search(Search):
                 d = True
         if not d:
             print("We are sorry to inform you that the search resulted in NOTHING!")
+# Class implementing binary search inheriting Search Class
+class Binary_Search(Search):
+    def _search(self, b):
+        left, right = 0, len(self._items) - 1
+        found = False
 
+        while left <= right:
+            mid = (left + right) // 2
+            if self._items[mid] == b:
+                print("FOUND!!!!!! using Binary Search index =", mid)
+                found = True
+                break
+            elif self._items[mid] < b:
+                left = mid + 1
+            else:
+                right = mid - 1
+
+        if not found:
+            print("We are sorry to inform you that the Binary Search resulted in NOTHING!")
 if __name__ == '__main__':
     try:
         # Input the size of the list
@@ -46,7 +64,9 @@ if __name__ == '__main__':
         m = int(input("Enter the value to be searched: "))
         
         # Create an instance of Linear_Search and perform the search
-        s = Linear_Search(g)
-        print("The time taken for the interations",s._time(m)," sec")
+        s1 = Linear_Search(g)
+        print("The time taken for the interations in Linear Search",s1._time(m)," sec")
+        s2 = Binary_Search(g)
+        print("The time taken for the iterations in Binary Search:", s2._time(m), "sec")
     except ValueError:
         print("Please enter valid integers for the list size and search value.")
